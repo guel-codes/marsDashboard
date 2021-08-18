@@ -73,7 +73,7 @@ const ImageOfTheDay = (apod) => {
 
     console.log(photodate.getDate() === today.getDate());
     if (!apod || apod.date === today.getDate() ) {
-        getImageOfTheDay(store)
+        getRoverInfo(store)
     }
 
     // check if the photo of the day is actually type video!
@@ -94,12 +94,23 @@ const ImageOfTheDay = (apod) => {
 // ------------------------------------------------------  API CALLS
 
 // Example API call
-const getImageOfTheDay = (state) => {
-    let { apod } = state
+// const getImageOfTheDay = (state) => {
+//     let { apod } = state
 
-    fetch(`http://localhost:3000/apod`)
+//     fetch(`http://localhost:3000/apod`)
+//         .then(res => res.json())
+//         .then(apod => updateStore(store, { apod }))
+
+//     return data
+// }
+
+
+const getRoverInfo = (state) => {
+    let { roverName } = state
+
+    fetch(`http://localhost:3000/rovers/:roverName`)
         .then(res => res.json())
-        .then(apod => updateStore(store, { apod }))
-
-    return data
+        .then(roverName => updateStore(store, { roverName }))
+            roverName = data
+    return roverName
 }

@@ -27,15 +27,14 @@ app.get('/manifests/:roverName', async (req, res) => {
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-
-// example API call
-// app.get('/apod', async (req, res) => {
+// app.get('/rover/:roverName', async (req, res) => {
+//     let { roverName } = req.params.roverName
 //     try {
-//         let image = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.API_KEY}`)
-//             .then(res => res.json())
-//         res.send({ image })
+//         let roverPhotos = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/latest_photos?api_key=${process.env.API_KEY}`)
+//         .then(res => res.json())
+//         res.send({ roverPhotos })
 //     } catch (err) {
-//         console.log('error:', err);
+//         console.log('error', err);
 //     }
 // })
 

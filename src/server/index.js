@@ -13,29 +13,29 @@ app.use(bodyParser.json())
 app.use('/', express.static(path.join(__dirname, '../public')))
 
 // your API calls
+// get rover data
+// app.get('/manifests/:roverName', async (req, res) => {
+//     try {
+//         const { roverName } = req.params;
+//         let roverDetails = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?max_date&api_key=${process.env.API_KEY}`)
+//             .then(res => res.json())
+//         res.send({ roverDetails })
+//     } catch (err) {
+//         console.log('error:', err);
+//     }
+// })
 
-app.get('/manifests/:roverName', async (req, res) => {
+
+// get latest rover photos & data
+app.get('/rovers/:name/photos', async (req, res) => {
     try {
-        const { roverName } = req.params;
-        let roverDetails = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?max_date&api_key=${process.env.API_KEY}`)
-            .then(res => res.json())
-        res.send({ roverDetails })
+        const rover = req.params.name
+        let roverPhotos = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/latest_photos?api_key=${process.env.API_KEY}`)
+        .then(res => res.json())
+        res.send({ roverPhotos })
     } catch (err) {
-        console.log('error:', err);
+        console.log('error', err);
     }
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-
-// app.get('/rover/:roverName', async (req, res) => {
-//     let { roverName } = req.params.roverName
-//     try {
-//         let roverPhotos = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/latest_photos?api_key=${process.env.API_KEY}`)
-//         .then(res => res.json())
-//         res.send({ roverPhotos })
-//     } catch (err) {
-//         console.log('error', err);
-//     }
-// })
-
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`))

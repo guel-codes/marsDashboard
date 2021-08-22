@@ -1,18 +1,23 @@
 let store = {
-    user: { name: "Student" },
+    user: { name: "Astronaut" },
     rovers: ['Curiosity', 'Opportunity', 'Spirit'],
-    roverData: {},
-    currentRover: 'Curiosity',
-    roverPhotos:{}
+    roverData: [],
+    roverPhotos:[]
 }
 
-// add our markup to the page
+
 const root = document.getElementById('root')
 
-// const updateStore = (store, newState) => {
-//     store = Object.assign(store, newState)
-//     render(root, store)
-// }
+const updateStore = (data) => {
+    storeRoverData = store.roverData
+    storeRoverData = data.roverPhotos.latest_photos[0].rover
+    storeRoverPhotos = store.roverPhotos
+    storeRoverPhotos = data.roverPhotos.latest_photos[0].img_src
+    //  console.log(storeRoverData)
+    console.log(store.user)
+    // store = Object.assign(store, newState)
+    // render(root, store)
+}
 
 // const render = async (root, state) => {
 // root.innerHTML = latest_photos
@@ -66,9 +71,9 @@ const root = document.getElementById('root')
 // }
 
 // listening for load event because page should load before any JS is called
+
 window.addEventListener('load', () => {
-    getRoverPhotos(store.currentRover)
-    // render(root, store)
+    // render(root, store) 
 }) 
 
 
@@ -138,10 +143,16 @@ window.addEventListener('load', () => {
 //     return data
 // }
 
+roverNames = store.rovers // pull list from the store
 
-const getRoverPhotos = (roverName) => {
+roverNames.forEach((roverName) =>{
     fetch(`http://localhost:3000/rovers/${roverName}/photos`)
         .then(res => res.json())
-        .then(data => {root.innerHTML = `<section> <img src="${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%"/> </section>`
+        .then(data => {
+            updateStore(data)
     })
-}
+})
+
+// data.roverPhotos.latest_photos[0].img_src  -- to get images
+// data.roverPhotos.latest_photos -- to get the rover data
+// root.innerHTML = `<section> <img src="${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%"/> </section>

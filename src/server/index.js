@@ -12,18 +12,6 @@ app.use(bodyParser.json())
 
 app.use('/', express.static(path.join(__dirname, '../public')))
 
-// your API calls
-// get rover data
-// app.get('/manifests/:roverName', async (req, res) => {
-//     try {
-//         const { roverName } = req.params;
-//         let roverDetails = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/${roverName}?max_date&api_key=${process.env.API_KEY}`)
-//             .then(res => res.json())
-//         res.send({ roverDetails })
-//     } catch (err) {
-//         console.log('error:', err);
-//     }
-// })
 
 
 // get latest rover photos & data

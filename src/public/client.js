@@ -2,22 +2,25 @@ let store = {
     user: { name: "Astronaut" },
     rovers: ['Curiosity', 'Opportunity', 'Spirit'],
     roverData: [],
-    roverPhotos:[]
 }
-
-
 const root = document.getElementById('root')
 
 const updateStore = (data) => {
-    storeRoverData = store.roverData
-    storeRoverData = data.roverPhotos.latest_photos[0].rover
-    storeRoverPhotos = store.roverPhotos
-    storeRoverPhotos = data.roverPhotos.latest_photos[0].img_src
-    console.log(store)
-    // store = Object.assign(store, newState)
+    let storeRoverData = data
+    
+    newState = {
+        user: { name: "Astronaut" },
+        rovers: ['Curiosity', 'Opportunity', 'Spirit'],
+        roverData: [storeRoverData],
+    }
+
+    store = Object.assign(store, newState)
     // render(root, store)
 }
 
+
+console.log(store)
+// root.innerHTML = `<section> <img src="${store.roverPhotos}" height="350px" width="100%"/> </section>`
 // const render = async (root, state) => {
 // root.innerHTML = latest_photos
 // }
@@ -145,13 +148,15 @@ window.addEventListener('load', () => {
 roverNames = store.rovers // pull list from the store
 
 roverNames.forEach((roverName) =>{
+    allRoverInfo = []
     fetch(`http://localhost:3000/rovers/${roverName}/photos`)
         .then(res => res.json())
         .then(data => {
-            updateStore(data)
+            allRoverInfo.push(data.roverPhotos.latest_photos[0]) 
+              
     })
+    updateStore(allRoverInfo)
 })
-
 // data.roverPhotos.latest_photos[0].img_src  -- to get images
 // data.roverPhotos.latest_photos -- to get the rover data
 // root.innerHTML = `<section> <img src="${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%"/> </section>

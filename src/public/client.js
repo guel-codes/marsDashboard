@@ -13,8 +13,7 @@ const updateStore = (data) => {
     storeRoverData = data.roverPhotos.latest_photos[0].rover
     storeRoverPhotos = store.roverPhotos
     storeRoverPhotos = data.roverPhotos.latest_photos[0].img_src
-    //  console.log(storeRoverData)
-    console.log(store.user)
+    console.log(store)
     // store = Object.assign(store, newState)
     // render(root, store)
 }

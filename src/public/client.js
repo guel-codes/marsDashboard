@@ -7,7 +7,7 @@ const root = document.getElementById('root')
 
 const updateStore = (data) => {
     let storeRoverData = data
-    
+
     newState = {
         user: { name: "Astronaut" },
         rovers: ['Curiosity', 'Opportunity', 'Spirit'],
@@ -15,7 +15,6 @@ const updateStore = (data) => {
     }
 
     store = Object.assign(store, newState)
-    // render(root, store)
 }
 
 

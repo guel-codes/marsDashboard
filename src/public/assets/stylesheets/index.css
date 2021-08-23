@@ -5,8 +5,20 @@ body {
   flex-direction: column;
   font-family: Arial;
   min-height: 100vh;
-  background-image: url("./images/mars_landscape.jpg")
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #faebeb;
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1623578964147-f4ffc54e3d5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2176&q=80');
 }
+
+
+/* img {
+  border-width: 10px;
+  border-color: black;
+  border-style: ridge;
+} */
+
 
 header {
   /* header styles */

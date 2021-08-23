@@ -1,4 +1,10 @@
 /* -------------------  MOBILE  --------------------- */
+ /* for color gradient */
+@property --color-position {
+  syntax: '<length-percentage>';
+  inherits: false;
+  initial-value: 10%;
+}
 
 body {
   display: flex;
@@ -9,16 +15,31 @@ body {
   padding-bottom: 3rem;
   color: #faebeb;
   text-align: center;
-  background-image: url('https://images.unsplash.com/photo-1623578964147-f4ffc54e3d5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2176&q=80');
+  
+
+  /* for color gradient */
+  margin: 0;
+  overflow: hidden;
+  --color-position: 30%;
+  background: radial-gradient(circle at center, #F9F871, #FFD45A var(--color-position));
+  animation: beat 3s infinite ease-in-out;
+
 }
 
-
+ /* for color gradient */
+@keyframes beat {
+  33%, 66% {
+    --color-position: 160%;
+  }
+}
 /* img {
   border-width: 10px;
   border-color: black;
   border-style: ridge;
 } */
-
+#pageTitle{
+  color: #000000;
+}
 
 header {
   /* header styles */
@@ -27,6 +48,7 @@ header {
 main {
   flex: 1;
   padding: 20px;
+
 }
 
 footer {

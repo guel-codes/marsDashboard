@@ -85,6 +85,7 @@ body {
 .card:hover {
   background: rgb(207, 168, 77);
   color: #fff;
+  height: 50em
 }
 
 

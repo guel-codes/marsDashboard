@@ -1,5 +1,3 @@
-// self.importScripts("https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js" );
-
 let store = {
     user: { name: "Astronaut" },
     rovers: ['Curiosity', 'Opportunity', 'Spirit'],
@@ -19,6 +17,13 @@ const updateStore = (data) => {
 }
 console.log(store)
 const root = document.getElementById('root')
+
+// const updateStore = (newState) => {
+//     store = Object.assign(store, newState)
+//     // render(root, store)
+// }
+// console.log(store)
+// const root = document.getElementById('root')
 
 // root.innerHTML = `<section> <img src="${store.roverPhotos}" height="350px" width="100%"/> </section>`
 // const render = async (root, state) => {
@@ -160,58 +165,10 @@ roverNames.forEach((roverName) =>{
 })
 
 
+// const getRoverInfo = (state) => {
+//     const { roverName } = state
 
-// root.innerHTML = `<section> <img src="${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%"/> </section>
-
-
-///////FRONT END ANIMATION////////
-const scene = new THREE.Scene();
-scene.fog = new THREE.Fog(0xFFBD00, 8, 30);
-const camera = new THREE.PerspectiveCamera(
-60,
-window.innerWidth / window.innerHeight,
-0.1,
-1000
-);
-camera.position.z = 10;
-
-const renderer = new THREE.WebGLRenderer({
-antialias: true,
-alpha: true // Make the scene transparent
-});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-let materials = [
-new THREE.MeshBasicMaterial({color:0xFF61AD,wireframe:true}),
-new THREE.MeshBasicMaterial({color:0xFF5BDB,wireframe:true}),
-new THREE.MeshBasicMaterial({color:0xFFAC63,wireframe:true}),
-new THREE.MeshBasicMaterial({color:0xFF8282,wireframe:true})
-];
-let geometry = new THREE.IcosahedronGeometry(1, 1);
-for (let i = 0; i < 30; i ++) {
-const mesh = new THREE.Mesh(geometry, materials[Math.floor(Math.random() * 4)]);
-const scale = Math.random() + 0.5;
-mesh.scale.multiplyScalar(scale);
-mesh.position.random().subScalar(0.5).multiplyScalar(15);
-mesh.speed = new THREE.Vector3().random().subScalar(0.5).multiplyScalar(0.01);
-scene.add(mesh);
-}
-
-function render(a) {
-scene.children.forEach(mesh => {
-    mesh.rotation.x += mesh.speed.x;
-    mesh.rotation.y += mesh.speed.y;
-    mesh.rotation.z += mesh.speed.z;
-});
-renderer.render(scene, camera);
-}
-renderer.setAnimationLoop(render);
-
-window.addEventListener("resize", onWindowResize, false);
-function onWindowResize() {
-camera.aspect = window.innerWidth / window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth, window.innerHeight);
-}
-
+//     fetch(`http://localhost:3000/rovers/${roverName}/photos`)
+//         .then(res => res.json())
+//         .then(data => console.log( data ))
+// }

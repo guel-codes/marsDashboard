@@ -1,3 +1,5 @@
+// self.importScripts("https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js" );
+
 let store = {
     user: { name: "Astronaut" },
     rovers: ['Curiosity', 'Opportunity', 'Spirit'],
@@ -75,6 +77,7 @@ const root = document.getElementById('root')
 window.addEventListener('load', () => {
     // render(root, store) 
 }) 
+
 
 
 // // ------------------------------------------------------  COMPONENTS
@@ -155,8 +158,9 @@ roverNames.forEach((roverName) =>{
     })
     updateStore(allRoverInfo)
 })
-// data.roverPhotos.latest_photos[0].img_src  -- to get images
-// data.roverPhotos.latest_photos -- to get the rover data
+
+
+
 // root.innerHTML = `<section> <img src="${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%"/> </section>
 
 

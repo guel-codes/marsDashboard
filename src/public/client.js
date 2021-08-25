@@ -16,6 +16,7 @@ const updateStore = (data) => {
     store = Object.assign(store, newState)
 }
 
+let roverDetail
 // const addClickListener = (className) => {
 // 	let htmlElements = document.querySelectorAll(`.${className}`);
 // 	htmlElements.forEach(el => {

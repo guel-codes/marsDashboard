@@ -15,19 +15,13 @@ const updateStore = (data) => {
 
     store = Object.assign(store, newState)
 }
-console.log(store)
-const root = document.getElementById('root')
 
-// const updateStore = (newState) => {
-//     store = Object.assign(store, newState)
-//     // render(root, store)
-// }
-// console.log(store)
-// const root = document.getElementById('root')
-
-// root.innerHTML = `<section> <img src="${store.roverPhotos}" height="350px" width="100%"/> </section>`
-// const render = async (root, state) => {
-// root.innerHTML = latest_photos
+// const addClickListener = (className) => {
+// 	let htmlElements = document.querySelectorAll(`.${className}`);
+// 	htmlElements.forEach(el => {
+// 		el.style.cursor = "pointer";
+// 		el.addEventListener("click", () => { filter(event) }, false);
+// 	});
 // }
 
 
@@ -142,14 +136,6 @@ window.addEventListener('load', () => {
 //     return data
 // }
 
-// const getRoverInfo = (state) => {
-//     let { rover } = state
-//     fetch(`http://localhost:3000/rovers/:name/photos`)
-//         .then(res => res.json())
-//         .then(rover => updateStore(store, { rover }))
-        
-//     return data
-// }
 
 roverNames = store.rovers // pull list from the store
 
@@ -164,11 +150,21 @@ roverNames.forEach((roverName) =>{
     updateStore(allRoverInfo)
 })
 
+console.log(store.roverData)
+function curClick(){
+    alert('This is the Curiosity Rover')
+    document.getElementById('curRover').style.opacity = "0"
+    return `<div>${store.roverData[0][2].rover.name}</div>`
+    // card = document.querySelector('#container')
+    // card.style.display = 'none'
+}
+function oppClick(){
+    alert('This is the Opportunity Rover')
+    // card.style.display = 'none'
+}
+function spirClick(){
+    alert('This is the Spirit Rover')
+    // card = document.querySelector('#container')
+    // card.style.display = 'none'
+}
 
-// const getRoverInfo = (state) => {
-//     const { roverName } = state
-
-//     fetch(`http://localhost:3000/rovers/${roverName}/photos`)
-//         .then(res => res.json())
-//         .then(data => console.log( data ))
-// }

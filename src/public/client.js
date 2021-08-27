@@ -14,6 +14,7 @@ const updateStore = (roverName, roverData) => {
 
 const render = async(root, state) => {
     root.innerHTML = App(state)
+    
 }
 
 const App = (state) => {
@@ -52,5 +53,9 @@ roverNames.forEach((roverName) => {
 })
 
 function onClick(roverName) {
-    document.getElementById(roverName).innerHTML = store[roverName].rover.landing_date
+    document.getElementById(roverName).innerHTML = `<h3>Landing Date: ${store[roverName].rover.landing_date}</h3>
+    <h3>Launch Date: ${store[roverName].rover.launch_date}</h3>
+    <h3>Launch Date: ${store[roverName].rover.status}</h3><br>
+    <div><img src="${store[roverName].img_src}" alt="rover"></div>`
 }
+

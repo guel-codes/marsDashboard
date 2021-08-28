@@ -109,9 +109,6 @@ body {
   color: #000000;
 }
 
-header {
-
-}
 
 main {
   flex: 1;
@@ -119,9 +116,6 @@ main {
 
 }
 
-footer {
-  /* footer styles */
-}
 
 
 /* -------------------  TABLET  --------------------- */

@@ -105,8 +105,10 @@ body {
   }
 }
 
-#pageTitle{
+pageTitle{
   color: #000000;
+  font-family:fantasy; 
+  font-size: '3em';
 }
 
 

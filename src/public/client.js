@@ -1,6 +1,6 @@
 let store = {
     user: { name: "Astronaut" },
-    rovers: ['Curiosity', 'Opportunity', 'Spirit']
+    rovers: Immutable.List(['Curiosity', 'Opportunity', 'Spirit'])
 }
 
 const root = document.getElementById('root')
@@ -17,9 +17,8 @@ const render = async(root, state) => {
     
 }
 
-const App = (state) => {
+const App = () => {
     return `
-        <header></header>
         <main>
             <div class="container">
                 <div id='Curiosity' onclick="onClick('Curiosity')" class="card card0">
@@ -53,9 +52,15 @@ roverNames.forEach((roverName) => {
 })
 
 function onClick(roverName) {
-    document.getElementById(roverName).innerHTML = `<h3>Landing Date: ${store[roverName].rover.landing_date}</h3>
-    <h3>Launch Date: ${store[roverName].rover.launch_date}</h3>
-    <h3>Launch Date: ${store[roverName].rover.status}</h3><br>
-    <div><img src="${store[roverName].img_src}" alt="rover"></div>`
+    document.getElementById(roverName).innerHTML = `
+    <div><h2 class="card-title" style="color: white">Rover: ${store[roverName].rover.name}</h2></div>
+    <section>
+        <p style="color: white">Landing Date: ${store[roverName].rover.landing_date}</p>
+        <p style="color: white">Launch Date: ${store[roverName].rover.launch_date}</p>
+        <p style="color: white">Rover Status: ${store[roverName].rover.status}</p>
+    </section>
+    <div style="color: white">Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover" width="500" height="500"/>
+    </div>
+    `
 }
 

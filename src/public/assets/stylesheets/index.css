@@ -40,8 +40,8 @@ body {
   margin: 0 auto;
 }
 .border{
-  height: 369px;
-  width: 290px;
+  height: 30em;
+  width: 30em;
   background: transparent;
   border-radius: 10px;
   transition: border 1s;
@@ -85,7 +85,8 @@ body {
 .card:hover {
   background: rgb(207, 168, 77);
   color: #fff;
-  height: 50em
+  height: 50em;
+  width: 35em
 }
 
 
@@ -109,7 +110,7 @@ body {
 }
 
 header {
-  /* header styles */
+
 }
 
 main {

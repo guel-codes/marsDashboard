@@ -1,9 +1,20 @@
 let store = {
     user: { name: "Astronaut" },
-    rovers: Immutable.List(['Curiosity', 'Opportunity', 'Spirit'])
+    rovers: Immutable.List(['Curiosity', 'Opportunity', 'Spirit']),
+    roverFactsDict: {}
 }
 
+const roverNames = store.rovers
 const root = document.getElementById('root')
+const roverFacts = {
+    Curiosity: "The rover's goals include an investigation of the Martian climate and geology, assessment of whether the selected field site inside Gale has ever offered environmental conditions favorable for microbial life (including investigation of the role of water), and planetary habitability studies in preparation for human exploration.",
+    Opportunity: "Mission highlights included the initial 90-sol mission, finding meteorites such as Heat Shield Rock (Meridiani Planum meteorite), and over two years of exploring and studying Victoria crater.",
+    Spirit: "The rover completed its planned 90-sol mission (slightly less than 92.5 Earth days). Aided by cleaning events that resulted in more energy from its solar panels, Spirit went on to function effectively over twenty times longer than NASA planners expected.",
+}
+
+roverNames.map((rover) => {
+    store.roverFactsDict[rover] = roverFacts[rover]
+})
 
 const updateStore = (roverName, roverData) => {
     newState = {}
@@ -56,18 +67,20 @@ function cardStyling(roverName){
         <p style="color: white">Landing Date: ${store[roverName].rover.landing_date}</p>
         <p style="color: white">Launch Date: ${store[roverName].rover.launch_date}</p>
         <p style="color: white">Rover Status: ${store[roverName].rover.status}</p>
+        <p>${getRoverFact(roverName)}</p>
     </section>
     <div style="color: white">Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover" width="500" height="500"/>
     </div>
     `
 }
 
+const getRoverFact = (roverName) => {
+    return store.roverFactsDict[roverName]
+}
+
 function onClick(roverName) {
     cardStyling(roverName)
 }
-
-
-roverNames = store.rovers // pull list from the store
 
 roverNames.forEach((roverName) => {
     fetch(`http://localhost:3000/rovers/${roverName}/photos`)

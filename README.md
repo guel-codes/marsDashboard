@@ -1,6 +1,5 @@
 # Functional Programming with Javascript 
 
-![Mars Rover Dashboard](images/frontPage1.png)
 
 ### Big Picture
 
@@ -12,5 +11,4 @@ This Mars rover dashboard that consumes the NASA API. The dashboard will allow t
 - To install all dependencies run a ``` yarn install ``` in your terminal
 
 
-![Mars Rover Dashboard2](images/frontPage2.png)
 
